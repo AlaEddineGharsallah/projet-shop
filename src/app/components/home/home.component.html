@@ -69,56 +69,31 @@
             <!-- Tab Nav -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
               <li class="nav-item">
-                <a class="nav-link active" data-toggle="tab" href="#man" role="tab">Xiaomi</a>
+                <a class="nav-link active" data-toggle="tab" href="#xiaomi" role="tab" (click)='getPhonesByType("Xiaomi")'>Xiaomi</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#women" role="tab">samsung</a>
+                <a class="nav-link" data-toggle="tab" href="#samsung" role="tab" (click)='getPhonesByType("samsung")'>samsung</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="#kids" role="tab">apple</a>
+                <a class="nav-link" data-toggle="tab" href="#xiaomi" role="tab" (click)='getPhonesByType("Apple")'>apple</a>
               </li>
 
             </ul>
             <!--/ End Tab Nav -->
           </div>
-          <div class="tab-content" id="myTabContent">
+         
             <!-- Start Single Tab -->
-            <div class="tab-pane fade show active" id="man" role="tabpanel">
+            <div class=" fade show active"  role="tabpanel">
               <div class="tab-single">
                 <div class="row">
-                  <div *ngFor="let p of showPhones('Xiaomi')" class="col-xl-3 col-lg-4 col-md-4 col-12">
-                    <span *ngIf='p.marque==="Xiaomi"'>
+                  <div *ngFor="let p of filtredPhones" class="col-xl-3 col-lg-4 col-md-4 col-12">
                       <app-tab-phones [phone]='p'></app-tab-phones>
-                    </span>
                   </div>
                 </div>
               </div>
             </div>
-            <!--/ End Single Tab -->
-            <!-- Start Single Tab -->
-            <div class="tab-pane fade" id="women" role="tabpanel">
-              <div class="tab-single">
-                <div class="row ">
-                  <span *ngFor="let p of showPhones('samsung')" class="col-xl-3 col-lg-4 col-md-4 col-12">
-                    <app-tab-phones [phone]='p'></app-tab-phones>
-                  </span>
-                </div>
-              </div>
-            </div>
-            <!--/ End Single Tab -->
-            <!-- Start Single Tab -->
-            <div class="tab-pane fade" id="kids" role="tabpanel">
-              <div class="tab-single">
-                <div class="row">
-                  <span *ngFor="let p of showPhones('Apple')" class="col-xl-3 col-lg-4 col-md-4 col-12">
-                    <app-tab-phones [phone]='p'></app-tab-phones>
-                  </span>
 
-                </div>
-              </div>
-            </div>
-            <!--/ End Single Tab -->
-            <!-- Start Single Tab -->
+            <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade" id="accessories" role="tabpanel">
               <div class="tab-single">
                 <div class="row">
