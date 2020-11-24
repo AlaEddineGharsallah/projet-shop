@@ -23,7 +23,7 @@ marques:any;
         this.getMarques();
         console.log(this.marques);
          
-        this.getPhonesByType('Xiaomi');
+        this.getPhonesByType(this.marques[0]);
         
       }
     );

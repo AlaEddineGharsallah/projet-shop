@@ -15,6 +15,7 @@ import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { DataService } from "./service/data.service";
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PhoneDetailComponent } from './components/phones/phone-detail/phone-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CartComponent,
     CheckoutComponent,
     TabPhonesComponent,
-    DisplayPhoneComponent
+    DisplayPhoneComponent,
+    PhoneDetailComponent
   ],
   imports: [
     BrowserModule,

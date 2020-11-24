@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tab-phones',
@@ -7,13 +8,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class TabPhonesComponent implements OnInit {
 @Input() phone:any;
-  constructor() { }
+showPhone:any=[];
+  constructor(private router :Router) { }
 
   ngOnInit(): void {
+  
   }
-  getId(id:number){
-    console.log('ernhstdgrfeukjfhj',id);
-    
+  getId(id:string){
+    console.log('ernhstdgrfeukjfhj',this.phone);
+    this.router.navigate([`phoneDetails/${id}`])
   }
 }
 

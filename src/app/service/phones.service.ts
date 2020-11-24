@@ -13,5 +13,7 @@ export class PhonesService {
   getAllPhones():Observable<any>{
     return this.httpClient.get(this.phonesUrl);
   }
-  
+  getPhoneBYId(id:String){
+    return this.httpClient.get(`${this.phonesUrl}/${id}`);
+  }
 }
