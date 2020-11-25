@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,7 +15,7 @@ import { DisplayPhoneComponent } from './components/phones/display-phone/display
 import { InMemoryWebApiModule } from "angular-in-memory-web-api";  
 import { DataService } from "./service/data.service";
 import { HttpClientModule } from '@angular/common/http';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import {MatDialogModule} from "@angular/material/dialog";
 import { PhoneDetailComponent } from './components/phones/phone-detail/phone-detail.component';
 @NgModule({
   declarations: [
@@ -30,12 +31,14 @@ import { PhoneDetailComponent } from './components/phones/phone-detail/phone-det
     DisplayPhoneComponent,
     PhoneDetailComponent
   ],
+  entryComponents:[DisplayPhoneComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
     InMemoryWebApiModule.forRoot(DataService),
+    BrowserAnimationsModule, 
     HttpClientModule,
-    NgbModule
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DisplayPhoneComponent } from '../display-phone/display-phone.component';
+
 
 @Component({
   selector: 'app-tab-phones',
@@ -9,14 +12,15 @@ import { Router } from '@angular/router';
 export class TabPhonesComponent implements OnInit {
 @Input() phone:any;
 showPhone:any=[];
-  constructor(private router :Router) { }
-
+  constructor(public dialog: MatDialog){ }
+ 
   ngOnInit(): void {
   
   }
-  getId(id:string){
-    console.log('ernhstdgrfeukjfhj',this.phone);
-    this.router.navigate([`phoneDetails/${id}`])
+  
+  openDialog() {
+    this.dialog.open(DisplayPhoneComponent);
+    localStorage.setItem('phoneTobeDisplayed',JSON.stringify(this.phone));
   }
 }
 

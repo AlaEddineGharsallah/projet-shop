@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PhonesService } from 'src/app/service/phones.service';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { ActivatedRoute } from '@angular/router';
 
 
