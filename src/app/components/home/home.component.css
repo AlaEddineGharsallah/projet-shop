@@ -1,0 +1,19 @@
+.material-icons.orange600:hover {
+    color: #f7941d
+}
+
+.material-icons.orange600.active {
+    color: #f7941d
+}
+
+.material-icons.orange600 {
+    color: #2c2d3f
+}
+
+.material-icons.md-48 {
+    font-size: 70px;
+}
+
+.center {
+    text-align: center;
+}

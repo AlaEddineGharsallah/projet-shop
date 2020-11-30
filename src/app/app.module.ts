@@ -16,7 +16,6 @@ import { InMemoryWebApiModule } from "angular-in-memory-web-api";
 import { DataService } from "./service/data.service";
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from "@angular/material/dialog";
-import { PhoneDetailComponent } from './components/phones/phone-detail/phone-detail.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,8 +27,7 @@ import { PhoneDetailComponent } from './components/phones/phone-detail/phone-det
     CartComponent,
     CheckoutComponent,
     TabPhonesComponent,
-    DisplayPhoneComponent,
-    PhoneDetailComponent
+    DisplayPhoneComponent
   ],
   entryComponents:[DisplayPhoneComponent],
   imports: [

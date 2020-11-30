@@ -9,9 +9,11 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-marques:any;
-  phones: any=[];
+  brands: any;
+  phones: any = [];
   filtredPhones: any = [];
+  filtredPhonesEtat: any = [];
+
   constructor(
     private phoneService: PhonesService) { }
 
@@ -20,23 +22,24 @@ marques:any;
       data => {
         this.phones = data;
         this.getMarques();
-        console.log(this.marques);
-         
-        this.getPhonesByType(this.marques[0]);
-        
+        console.log(this.brands);
+
+        this.getPhonesByType(this.brands[0]);
+
       }
     );
   }
 
-  //* Fonction d'extarction des produits de la base selon la marque
-  getPhonesByType(type: String) {
-    this.filtredPhones = this.phones.filter(phone => phone.marque === type);
+  getPhonesByType(type: string) {
+    this.filtredPhones = this.phones.filter(phone => 
+      ( phone.brand === type && phone.status.length>1));
+
     return this.filtredPhones;
-    
+
   }
 
   getMarques() {
-    this.marques= [...new Map(this.phones.map(item=> [item.marque,item.marque])).values()];
+    this.brands = [...new Map(this.phones.map(item => [item.brand, item.brand])).values()];
   }
 }
 
