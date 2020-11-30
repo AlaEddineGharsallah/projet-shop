@@ -1,0 +1,92 @@
+<div class="container my-5">
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active font-weight-bold" id="nav-phones-tab" data-toggle="tab" href="#nav-phones" role="tab" aria-controls="nav-phones" aria-selected="true">Phones</a>
+            <a class="nav-item nav-link font-weight-bold" id="nav-pcs-tab" data-toggle="tab" href="#nav-pcs" role="tab" aria-controls="nav-pcs" aria-selected="false">PC</a>
+            <a class="nav-item nav-link font-weight-bold" id="nav-addPhone-tab" data-toggle="tab" href="#nav-addPhone" role="tab" aria-controls="nav-addPhone" aria-selected="false">Add Phone</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="nav-phones" role="tabpanel" aria-labelledby="nav-phones-tab">
+            <div class="card m-3 text-center">
+                <div class="card-body">
+                    <table class="table custom-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">N°</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-weight-bold">
+                            <!-- <tr *ngFor="let a of allPhones; let number=index"> -->
+                            <!-- <tr>
+                                <td>{{ number+1 }}</td>
+                                <td>
+                                    <img [src]="a.image" style="width: 50px; height: 50px; border-radius: 20px" />
+                                </td>
+                                <td>{{ a.brand }} {{a.model}}</td>
+                                <td>{{ a.price }}</td>
+                                <td>
+                                    <button type="button" (click)="displayPhone(a._id)" class="btn btn-outline-info mr-2">
+                                        Afficher
+                                    </button>
+                                    <button type="button" (click)="editPhone(a._id)" class="btn btn-outline-success mr-2">
+                                        Modifier
+                                    </button>
+                                    <button type="button" (click)="deletePhone(a._id)" class="btn btn-outline-danger mr-2">
+                                        Suppimer
+                                    </button>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-pcs" role="tabpanel" aria-labelledby="nav-pcs-tab">
+            <div class="card m-3 text-center">
+                <div class="card-body">
+                    <table class="table custom-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">N°</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Prix</th>
+                                <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-weight-bold">
+                            <!-- <tr *ngFor="let k of allPCs;let number=index"> -->
+                            <!-- <tr>
+                                <td>{{ number+1 }}</td>
+                                <td>
+                                    <img [src]="k.image" style="border-radius: 20px" alt="" />
+                                </td>
+                                <td>{{ k.brand }} {{ k.model }}</td>
+                                <td>{{ k.price }}</td>
+                                <td>
+                                    <button type="button" (click)="displayPc(a._id)" class="btn btn-outline-info mr-2">
+                                        Afficher
+                                    </button>
+                                    <button type="button" (click)="editPc(a._id)" class="btn btn-outline-success mr-2">
+                                        Modifier
+                                    </button>
+                                    <button type="button" (click)="deletePc(a._id)" class="btn btn-outline-danger mr-2">
+                                        Suppimer
+                                    </button>
+                                </td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-addPhone" role="tabpanel" aria-labelledby="nav-addPhone-tab">
+            <app-add-phone></app-add-phone>
+        </div>
+    </div>
+</div>

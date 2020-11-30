@@ -19,11 +19,12 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.phoneService.getAllPhones().subscribe(
-      data => {
-        this.phones = data;
+      (data) => {
+        this.phones = data.phones;
+        console.log('dddd', this.phones);
+
         this.getMarques();
         console.log(this.brands);
-
         this.getPhonesByType(this.brands[0]);
 
       }
@@ -31,8 +32,10 @@ export class HomeComponent implements OnInit {
   }
 
   getPhonesByType(type: string) {
-    this.filtredPhones = this.phones.filter(phone => 
-      ( phone.brand === type && phone.status.length>1));
+    this.filtredPhones = this.phones.filter(phone =>
+      (phone.brand === type));
+ 
+    console.log(this.filtredPhones);
 
     return this.filtredPhones;
 

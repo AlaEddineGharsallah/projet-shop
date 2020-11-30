@@ -1,8 +1,8 @@
 <div class="single-product">
     <div class="product-img">
         <a href="product-details.html">
-            <img class="default-img" src="https://via.placeholder.com/550x750" alt="#" />
-            <img class="hover-img" src="https://via.placeholder.com/550x750" alt="#" />
+            <img class="default-img" [src]="phone.image" alt="#" />
+
 
             <span *ngIf='phone.status.length>0' [ngClass]="{'out-of-stock':phone.status=='hot',
                               'new':phone.status=='new',

@@ -15,12 +15,14 @@ showPhone:any=[];
   constructor(public dialog: MatDialog){ }
  
   ngOnInit(): void {
-  
+    
   }
   
   openDialog() {
     this.dialog.open(DisplayPhoneComponent);
     localStorage.setItem('phoneTobeDisplayed',JSON.stringify(this.phone));
+   
+    
   }
 }
 
