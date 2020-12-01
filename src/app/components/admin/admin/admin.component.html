@@ -1,9 +1,10 @@
 <div class="container my-5">
     <nav>
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-            <a class="nav-item nav-link active font-weight-bold" id="nav-phones-tab" data-toggle="tab" href="#nav-phones" role="tab" aria-controls="nav-phones" aria-selected="true">Phones</a>
-            <a class="nav-item nav-link font-weight-bold" id="nav-pcs-tab" data-toggle="tab" href="#nav-pcs" role="tab" aria-controls="nav-pcs" aria-selected="false">PC</a>
-            <a class="nav-item nav-link font-weight-bold" id="nav-addPhone-tab" data-toggle="tab" href="#nav-addPhone" role="tab" aria-controls="nav-addPhone" aria-selected="false">Add Phone</a>
+            <a class="nav-item nav-link active font-weight-bold" id="nav-phones-tab" data-toggle="tab" href="#nav-phones" role="tab" aria-controls="nav-phones" aria-selected="true">Téléphones</a>
+            <a class="nav-item nav-link font-weight-bold" id="nav-pcs-tab" data-toggle="tab" href="#nav-pcs" role="tab" aria-controls="nav-pcs" aria-selected="false">Ordinateurs</a>
+            <a class="nav-item nav-link font-weight-bold" id="nav-addPhone-tab" data-toggle="tab" href="#nav-addPhone" role="tab" aria-controls="nav-addPhone" aria-selected="false">Ajouter Tél</a>
+            <a class="nav-item nav-link font-weight-bold" id="nav-addComputer-tab" data-toggle="tab" href="#nav-addComputer" role="tab" aria-controls="nav-addPhone" aria-selected="false">Ajouter PC</a>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
@@ -87,6 +88,9 @@
         </div>
         <div class="tab-pane fade" id="nav-addPhone" role="tabpanel" aria-labelledby="nav-addPhone-tab">
             <app-add-phone></app-add-phone>
+        </div>
+        <div class="tab-pane fade" id="nav-addComputer" role="tabpanel" aria-labelledby="nav-addComputer-tab">
+            <app-add-computer></app-add-computer>
         </div>
     </div>
 </div>

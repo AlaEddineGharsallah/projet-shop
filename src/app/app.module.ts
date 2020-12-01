@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule} from "@angular/material/dialog";
 import { AddPhoneComponent } from './components/admin/add-phone/add-phone.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
+import { AddComputerComponent } from './components/admin/add-computer/add-computer.component';
 @NgModule({
   declarations: [
     
@@ -34,6 +35,7 @@ import { AdminComponent } from './components/admin/admin/admin.component';
     DisplayPhoneComponent,
     AddPhoneComponent,
     AdminComponent,
+    AddComputerComponent,
   ],
   entryComponents:[DisplayPhoneComponent],
   imports: [

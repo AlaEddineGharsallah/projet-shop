@@ -14,7 +14,7 @@ export class PhonesService {
     return this.httpClient.get<{phones:any,message:string}>(`${this.phonesUrl}/api/phones`);
   }
 
-  getPhoneBYId(id: String) {
+  getPhoneById(id: String) {
     return this.httpClient.get(`${this.phonesUrl}/${id}`);
   }
   addPhone(phone:any,image:File){
@@ -42,4 +42,6 @@ export class PhonesService {
     fromData.append('image',phone.image);
     return this.httpClient.post(`${this.phonesUrl}/api/addPhone`,fromData);
   }
+
+ 
 }

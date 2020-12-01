@@ -16,8 +16,6 @@ const bodyParser = require("body-parser");
 //* Import bcrypt module (Password Encryption)
 const bcrypt = require("bcrypt");
 
-//* Import phone Model
-const Phone = require("./models/phone");
 //! bodyParser configuration
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -25,7 +23,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 //* Import Mongoose Module from node Modules
 const mongoose = require("mongoose");
 const { url } = require("inspector");
-
 //* Connect to DB named shopDB on port 27017
 mongoose.connect("mongodb://localhost:27017/shopDB", {
     useNewUrlParser: true,
@@ -77,6 +74,11 @@ app.use((req, res, next) => {
     );
     next();
 });
+
+//* Import phone Model
+const Phone = require("./models/phone");
+
+//* get all phones
 app.get('/api/phones', (req, res) => {
     Phone.find((err, documents) => {
         if (!err) {
@@ -87,6 +89,8 @@ app.get('/api/phones', (req, res) => {
         }
     })
 })
+
+//* Add phone in the DB
 app.post("/api/addPhone", multer({ storage: storage }).single('image'), (req, res) => {
     let url = req.protocol + '://' + req.get('host');
     console.log('eee', req.file.filename);
@@ -120,5 +124,57 @@ app.post("/api/addPhone", multer({ storage: storage }).single('image'), (req, re
         console.log('phone added !!')
     )
 });
+
+
+//* Import computer Model
+const Computer = require("./models/computer");
+
+//* get all computers
+app.get('/api/computers', (req, res) => {
+    Computer.find((err, documents) => {
+        if (!err) {
+            res.status(200).json({
+                computers: documents,
+                message: 'ok !!'
+            })
+        }
+    })
+})
+
+//* Add computer in the DB
+app.post("/api/addComputer", multer({ storage: storage }).single('image'), (req, res) => {
+    let url = req.protocol + '://' + req.get('host');
+    console.log('eee', req.file.filename);
+    const computer = new Computer({
+        brand: req.body.brand,
+        model: req.body.model,
+        ref: req.body.ref,
+        price: req.body.price,
+        dateEndSale: req.body.dateEndSale,
+        os: req.body.os,
+        size: req.body.size,
+        cpu: req.body.cpu,
+        ram: req.body.ram,
+        rom: req.body.rom,
+        waranty: req.body.waranty,
+        status: req.body.status,
+        stock: req.body.stock,
+        color: req.body.color,
+        frontCam: req.body.frontCam,
+        backCam: req.body.backCam,
+        fingerPrint: req.body.fingerPrint,
+        sim: req.body.sim,
+        battery: req.body.battery,
+        faceId: req.body.faceId,
+        image: url + '/images/' + req.file.filename
+    })
+    computer.save().then(
+        res.status(200).json({
+            message: 'ok!!'
+        }),
+        console.log('computer added !!')
+    )
+});
+
 //* Export app
 module.exports = app;
