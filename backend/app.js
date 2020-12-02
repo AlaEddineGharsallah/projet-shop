@@ -82,7 +82,7 @@ const Phone = require("./models/phone");
 app.get('/api/phones', (req, res) => {
     Phone.find((err, documents) => {
         if (!err) {
-            res.status(200).json({
+            res.status(201).json({
                 phones: documents,
                 message: 'ok !!'
             })
@@ -125,23 +125,89 @@ app.post("/api/addPhone", multer({ storage: storage }).single('image'), (req, re
     )
 });
 
+//? Get phone by Id
+app.get("/api/getPhone/:id", (req, res) => {
+    Phone.findOne({ _id: req.params.id }).then((document) => {
+        res.status(200).json({
+            phone: document,
+        });
+    });
+});
+
+//? Edit phone
+app.put("/api/editPhone/:id", (req, res) => {
+    const phone = new Phone({
+        _id: req.body._id,
+        brand: req.body.brand,
+        model: req.body.model,
+        ref: req.body.ref,
+        price: req.body.price,
+        dateEndSale: req.body.dateEndSale,
+        os: req.body.os,
+        size: req.body.size,
+        cpu: req.body.cpu,
+        ram: req.body.ram,
+        rom: req.body.rom,
+        waranty: req.body.waranty,
+        status: req.body.status,
+        stock: req.body.stock,
+        color: req.body.color,
+        frontCam: req.body.frontCam,
+        backCam: req.body.backCam,
+        fingerPrint: req.body.fingerPrint,
+        sim: req.body.sim,
+        battery: req.body.battery,
+        faceId: req.body.faceId
+    });
+
+    Phone.updateOne({ _id: req.params.id }, phone)
+        .then(() => {
+            res.status(201).json({
+                message: "Phone updated successfully!",
+            });
+        })
+        .catch((error) => {
+            res.status(400).json({
+                error: error,
+            });
+        });
+});
+
+//! Delete phone
+app.delete("/api/deletePhone/:id", (req, res) => {
+    Phone.deleteOne({ _id: req.params.id }).then(
+        res.status(200).json({
+            message: "Deleted phone Successfully",
+        })
+    );
+});
 
 //* Import computer Model
 const Computer = require("./models/computer");
 
 //* get all computers
 app.get('/api/computers', (req, res) => {
-    Computer.find((err, documents) => {
-        if (!err) {
-            res.status(200).json({
-                computers: documents,
-                message: 'ok !!'
-            })
-        }
+        Computer.find((err, documents) => {
+            if (!err) {
+                res.status(200).json({
+                    computers: documents,
+                    message: 'ok !!'
+                })
+            }
+        })
     })
-})
-
-//* Add computer in the DB
+    //* get computer by id
+app.get('/api/getComputer/:id', (req, res) => {
+        Computer.findOne({ _id: req.params.id }).then(
+            document => {
+                res.status(200).json({
+                    computer: document,
+                    message: 'this is your computer!!'
+                })
+            }
+        )
+    })
+    //* Add computer in the DB
 app.post("/api/addComputer", multer({ storage: storage }).single('image'), (req, res) => {
     let url = req.protocol + '://' + req.get('host');
     console.log('eee', req.file.filename);
@@ -175,6 +241,56 @@ app.post("/api/addComputer", multer({ storage: storage }).single('image'), (req,
         console.log('computer added !!')
     )
 });
+
+
+//? Edit computer
+app.put("/api/editComputer/:id", (req, res) => {
+    const computer = new Computer({
+        _id: req.body._id,
+        brand: req.body.brand,
+        model: req.body.model,
+        ref: req.body.ref,
+        price: req.body.price,
+        dateEndSale: req.body.dateEndSale,
+        os: req.body.os,
+        size: req.body.size,
+        cpu: req.body.cpu,
+        ram: req.body.ram,
+        rom: req.body.rom,
+        waranty: req.body.waranty,
+        status: req.body.status,
+        stock: req.body.stock,
+        color: req.body.color,
+        frontCam: req.body.frontCam,
+        backCam: req.body.backCam,
+        fingerPrint: req.body.fingerPrint,
+        sim: req.body.sim,
+        battery: req.body.battery,
+        faceId: req.body.faceId
+    });
+
+    Computer.updateOne({ _id: req.params.id }, computer)
+        .then(() => {
+            res.status(201).json({
+                message: "Computer updated successfully!",
+            });
+        })
+        .catch((error) => {
+            res.status(400).json({
+                error: error,
+            });
+        });
+});
+
+//! Delete computer
+app.delete("/api/deleteComputer/:id", (req, res) => {
+    Computer.deleteOne({ _id: req.params.id }).then(
+        res.status(200).json({
+            message: "Deleted computer Successfully",
+        })
+    );
+});
+
 
 //* Export app
 module.exports = app;

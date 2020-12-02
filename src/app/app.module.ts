@@ -16,7 +16,7 @@ import { DisplayPhoneComponent } from './components/phones/display-phone/display
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataService } from "./service/data.service";
 import { HttpClientModule } from '@angular/common/http';
-import {MatDialogModule} from "@angular/material/dialog";
+import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
 import { AddPhoneComponent } from './components/admin/add-phone/add-phone.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { AddComputerComponent } from './components/admin/add-computer/add-computer.component';
@@ -48,7 +48,9 @@ import { AddComputerComponent } from './components/admin/add-computer/add-comput
     HttpClientModule,
     MatDialogModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

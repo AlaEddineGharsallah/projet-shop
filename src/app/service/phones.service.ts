@@ -14,9 +14,10 @@ export class PhonesService {
     return this.httpClient.get<{phones:any,message:string}>(`${this.phonesUrl}/api/phones`);
   }
 
-  getPhoneById(id: String) {
-    return this.httpClient.get(`${this.phonesUrl}/${id}`);
+  getPhoneById(id:String) {
+    return this.httpClient.get<{phone:any}>(`${this.phonesUrl}/api/getPhone/${id}`);
   }
+
   addPhone(phone:any,image:File){
     const fromData=new FormData;
     fromData.append('brand',phone.brand);
@@ -39,9 +40,18 @@ export class PhonesService {
     fromData.append('sim',phone.sim);
     fromData.append('battery',phone.battery);
     fromData.append('faceId',phone.faceId);
-    fromData.append('image',phone.image);
+    fromData.append('image',image);
     return this.httpClient.post(`${this.phonesUrl}/api/addPhone`,fromData);
   }
 
+  //? Delete phone by ID
+  deletePhones(id: string) {
+    return this.httpClient.delete<{message:string}>(`${this.phonesUrl}/api/deletePhone/${id}`);
+  }
+
+  //? Edit phone
+  editPhones(phone: any) {
+    return this.httpClient.put(`${this.phonesUrl}/api/editPhone/${phone._id}`, phone);
+  }
  
 }

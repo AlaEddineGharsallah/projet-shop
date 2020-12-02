@@ -1,79 +1,85 @@
-<div class="site-section">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <form [formGroup]='addPhoneForm'>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='brand' placeholder="brand" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='model' placeholder="model" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='ref' placeholder="ref" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='price' placeholder="price" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='dateEndSale' placeholder="dateEndSale" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='os' placeholder="os" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='size' placeholder="size" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='cpu' placeholder="cpu" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='ram' placeholder="ram" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='rom' placeholder="rom" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='waranty' placeholder="waranty" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='status' placeholder="status" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='stock' placeholder="stock" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='color' placeholder="color" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='frontCam' placeholder="frontCam" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='backCam' placeholder="backCam" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='fingerPrint' placeholder="fingerPrint" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='sim' placeholder="sim" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='battery' placeholder="battery" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-control" formControlName='faceId' placeholder="faceId" required>
-                    </div>
-                    <button class="btn btn-primary " type="button" (click)='filePicker.click()'>Choisissez un Tél</button>
-                    <div class="form-group">
-                        <input style="visibility: hidden;" type="file" class="form-control" #filePicker (change)='onImageSelected($event)' />
-                    </div>
-                    <img [src]="imagePreview">
-                    <div class="form-group">
-                        <button type="submit" [disabled]='addPhoneForm.invalid' (click)='addPhone(addPhoneForm.value)' class="btn btn-primary py-3 px-5">Add
-                            Phone</button>
-                    </div>
-                </form>
+<mat-dialog-content class="mat-typography">
+    <div class="site-section">
+        <div class="container">
+            <div class="row">
+                <div class="offset-4">
+                    <h1>Ajouter un téléphone</h1>
+                </div>
+                <div class="col-lg-12">
+                    <form #addPhoneForm='ngForm' (ngSubmit)='addPhone()'>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.brand' [ngModelOptions]="{standalone: true}" placeholder="Marque" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.model' [ngModelOptions]="{standalone: true}" placeholder="Modele" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.ref' [ngModelOptions]="{standalone: true}" placeholder="Réf" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.price' [ngModelOptions]="{standalone: true}" placeholder="Prix" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.dateEndSale' [ngModelOptions]="{standalone: true}" placeholder="Date fin promo" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.os' [ngModelOptions]="{standalone: true}" placeholder="OS" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.size' [ngModelOptions]="{standalone: true}" placeholder="Taille" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.cpu' [ngModelOptions]="{standalone: true}" placeholder="CPU" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.ram' [ngModelOptions]="{standalone: true}" placeholder="RAM" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.rom' [ngModelOptions]="{standalone: true}" placeholder="ROM" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.waranty' [ngModelOptions]="{standalone: true}" placeholder="Garantie" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.status' [ngModelOptions]="{standalone: true}" placeholder="Etat" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.stock' [ngModelOptions]="{standalone: true}" placeholder="Qantité" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.color' [ngModelOptions]="{standalone: true}" placeholder="Couleur" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.frontCam' [ngModelOptions]="{standalone: true}" placeholder="Caméra frontale" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.backCam' [ngModelOptions]="{standalone: true}" placeholder="Caméra arrière" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.fingerPrint' [ngModelOptions]="{standalone: true}" placeholder="Empreinte digitale" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.sim' [ngModelOptions]="{standalone: true}" placeholder="SIM" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.battery' [ngModelOptions]="{standalone: true}" placeholder="Batterie" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" [(ngModel)]='phoneToAdd.faceId' [ngModelOptions]="{standalone: true}" placeholder="Reconnaissance faciale" required>
+                        </div>
+                        <button class="btn btn-primary " type="button" (click)='filePicker.click()'>Insérer une image</button>
+                        <br><br>
+                        <img [src]="imagePreview" *ngIf='imagePreview' style="width: 100px;height: 100px;">
+                        <div class="form-group mt-3">
+                            <button type="submit" *ngIf='!data' class="btn btn-primary py-3 px-5">Ajouter Phone</button>
+                            <button type="submit" *ngIf='data' class="btn btn-primary py-3 px-5">Modifier Phone</button>
+                        </div>
+                        <div class="form-group">
+                            <input style="visibility: hidden;" type="file" class="form-control" #filePicker (change)='onImageSelected($event)' />
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</mat-dialog-content>

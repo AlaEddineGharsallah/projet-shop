@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ComputersService } from 'src/app/service/computers.service';
-import { PhonesService } from 'src/app/service/phones.service';
+import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-add-computer',
@@ -11,45 +11,61 @@ import { PhonesService } from 'src/app/service/phones.service';
 })
 export class AddComputerComponent implements OnInit {
   addComputerForm: FormGroup;
-  imagePreview:any;
-    constructor(
+  imagePreview: any;
+  computer:any;
+  constructor(
     private formBuilder: FormBuilder,
     private computerService: ComputersService,
-    private router: Router
+    private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: any
+        
   ) { }
 
   ngOnInit(): void {
-    this.addComputerForm = this.formBuilder.group({
-      brand: [''],
-      model: [''],
-      ref: [''],
-      price: [''],
-      dateEndSale: [''],
-      os: [''],
-      size: [''],
-      cpu: [''],
-      ram: [''],
-      rom: [''],
-      waranty: [''],
-      status: [''],
-      stock: [''],
-      color:[''],
-      frontCam: [''],
-      backCam: [''],
-      fingerPrint: [''],
-      sim: [''],
-      battery: [''],
-      faceId: [''],
-      image:['']
-    });
+    console.log(this.data);
+    
+    if (!this.data) {
+      this.computer={};
+      this.addComputerForm = this.formBuilder.group({
+        brand: [''],
+        model: [''],
+        ref: [''],
+        price: [''],
+        dateEndSale: [''],
+        os: [''],
+        size: [''],
+        cpu: [''],
+        gpu: [''],
+        ram: [''],
+        rom: [''],
+        waranty: [''],
+        status: [''],
+        stock: [''],
+        options: [''],
+        color: [''],
+        image: ['']
+      });
+    }else{
+      this.computerService.getComputerById(this.data).subscribe(data=>{
+        this.computer=data.computer;
+      })
+    }
+    
   }
 
-  addComputer(computer:any) {
-    console.log('Here my PC object',computer);
-    this.computerService.addComputer(computer,this.addComputerForm.value.image).subscribe(
-      () => {
-      console.log('computer added successfully');
-    });
+  addComputer() {
+    if (!this.data) {
+      console.log('Here my PC object', this.computer);
+      this.computerService.addComputer(this.computer, this.addComputerForm.value.image).subscribe(
+        () => {
+          console.log('computer added successfully');
+        });
+    }else{
+      this.computerService.editComputers(this.computer).subscribe(()=>{
+        console.log('computer edited!!');
+        
+      })
+    }
   }
 
   onImageSelected(event: Event) {
@@ -58,8 +74,8 @@ export class AddComputerComponent implements OnInit {
     this.addComputerForm.updateValueAndValidity();
     const reader = new FileReader();
     reader.onload = () => {
-    this.imagePreview = reader.result as string
+      this.imagePreview = reader.result as string
     };
     reader.readAsDataURL(file);
-    }
+  }
 }

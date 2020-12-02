@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddPhoneComponent } from './components/admin/add-phone/add-phone.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
@@ -15,7 +16,6 @@ const routes: Routes = [
   {path:'prod/:cat/:id',component:CheckoutComponent},
   {path:'admin',component:AdminComponent},
   {path:'shop-grid',component:ShopGridComponent}
-
 
 ];
 

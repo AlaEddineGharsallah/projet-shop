@@ -8,12 +8,11 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class DisplayPhoneComponent implements OnInit {
   phone: any = {};
-  constructor(@Inject(MAT_DIALOG_DATA) public id: any) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
   ngOnInit(): void {
-    this.phone=JSON.parse(localStorage.getItem("phoneTobeDisplayed"));
-    console.log("identifiant", this.phone.id);
-
+    this.phone=this.data;
+    console.log("identifiant", this.phone._id);
   }
 
 }

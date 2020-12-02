@@ -3,45 +3,50 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active font-weight-bold" id="nav-phones-tab" data-toggle="tab" href="#nav-phones" role="tab" aria-controls="nav-phones" aria-selected="true">Téléphones</a>
             <a class="nav-item nav-link font-weight-bold" id="nav-pcs-tab" data-toggle="tab" href="#nav-pcs" role="tab" aria-controls="nav-pcs" aria-selected="false">Ordinateurs</a>
-            <a class="nav-item nav-link font-weight-bold" id="nav-addPhone-tab" data-toggle="tab" href="#nav-addPhone" role="tab" aria-controls="nav-addPhone" aria-selected="false">Ajouter Tél</a>
-            <a class="nav-item nav-link font-weight-bold" id="nav-addComputer-tab" data-toggle="tab" href="#nav-addComputer" role="tab" aria-controls="nav-addPhone" aria-selected="false">Ajouter PC</a>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
         <div class="tab-pane fade show active" id="nav-phones" role="tabpanel" aria-labelledby="nav-phones-tab">
             <div class="card m-3 text-center">
                 <div class="card-body">
-                    <table class="table custom-table">
+
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">N°</th>
                                 <th scope="col">Image</th>
-                                <th scope="col">Nom</th>
+                                <th scope="col">Modele</th>
+                                <th scope="col">Marque </th>
                                 <th scope="col">Prix</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Quantité</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody class="font-weight-bold">
-                            <!-- <tr *ngFor="let a of allPhones; let number=index"> -->
-                            <!-- <tr>
-                                <td>{{ number+1 }}</td>
+                        <tbody>
+                            <tr>
+                                <td colspan="8"><button (click)="openDialogPhone()" style="background-color: transparent;border: none;"><i class="material-icons md-48 ">add_circle_outline</i></button></td>
+                            </tr>
+                            <tr *ngFor='let p of phones; let number=index'>
+                                <td scope="row">{{number+1}}</td>
+                                <td><img width="50px" [src]="p.image" alt=""></td>
+                                <td>{{p.model | uppercase}}</td>
+                                <td>{{p.brand | uppercase}}</td>
+                                <td>{{p.price | uppercase}}</td>
+                                <td>{{p.stock | uppercase}}</td>
                                 <td>
-                                    <img [src]="a.image" style="width: 50px; height: 50px; border-radius: 20px" />
+                                    <div class="button d-inline mx-1">
+                                        <a routerLink="#" class="btn" (click)="displayPhones(p)">Afficher</a>
+                                    </div>
+                                    <div class="button d-inline mx-1">
+                                        <a routerLink="#" class="btn" (click)="editPhones(p._id)">Modifier</a>
+                                    </div>
+                                    <div class="button d-inline mx-1">
+                                        <a routerLink="#" class="btn " (click)="deletePhones(p._id)">Suprimer</a>
+                                    </div>
                                 </td>
-                                <td>{{ a.brand }} {{a.model}}</td>
-                                <td>{{ a.price }}</td>
-                                <td>
-                                    <button type="button" (click)="displayPhone(a._id)" class="btn btn-outline-info mr-2">
-                                        Afficher
-                                    </button>
-                                    <button type="button" (click)="editPhone(a._id)" class="btn btn-outline-success mr-2">
-                                        Modifier
-                                    </button>
-                                    <button type="button" (click)="deletePhone(a._id)" class="btn btn-outline-danger mr-2">
-                                        Suppimer
-                                    </button>
-                                </td>
-                            </tr> -->
+
+                            </tr>
+
                         </tbody>
                     </table>
                 </div>
@@ -50,47 +55,45 @@
         <div class="tab-pane fade" id="nav-pcs" role="tabpanel" aria-labelledby="nav-pcs-tab">
             <div class="card m-3 text-center">
                 <div class="card-body">
-                    <table class="table custom-table">
+                    <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">N°</th>
                                 <th scope="col">Image</th>
-                                <th scope="col">Nom</th>
+                                <th scope="col">Modele</th>
+                                <th scope="col">Marque</th>
                                 <th scope="col">Prix</th>
-                                <th scope="col">Actions</th>
+                                <th scope="col">Quantité</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody class="font-weight-bold">
-                            <!-- <tr *ngFor="let k of allPCs;let number=index"> -->
-                            <!-- <tr>
-                                <td>{{ number+1 }}</td>
+                        <tbody>
+                            <tr>
+                                <td colspan="8"><button (click)="openDialogComputer()" style="background-color: transparent;border: none;"><i class="material-icons md-48 ">add_circle_outline</i></button></td>
+                            </tr>
+                            <tr *ngFor='let c of computers; let number=index'>
+                                <td scope="row">{{number+1}}</td>
+                                <td><img width="50px" [src]="c.image" alt=""></td>
+                                <td>{{c.model | uppercase}}</td>
+                                <td>{{c.brand | uppercase}}</td>
+                                <td>{{c.price | uppercase}}</td>
+                                <td>{{c.stock | uppercase}}</td>
                                 <td>
-                                    <img [src]="k.image" style="border-radius: 20px" alt="" />
+                                    <div class="button d-inline mx-1">
+                                        <a routerLink="#" class="btn" (click)="displayComputers(c)">Afficher</a>
+                                    </div>
+                                    <div class="button d-inline mx-1">
+                                        <a routerLink="#" class="btn" (click)='editComputers(c._id)'>Modifier</a>
+                                    </div>
+                                    <div class="button d-inline mx-1">
+                                        <a routerLink="#" class="btn " (click)="deleteComputers(c._id)">Suprimer</a>
+                                    </div>
                                 </td>
-                                <td>{{ k.brand }} {{ k.model }}</td>
-                                <td>{{ k.price }}</td>
-                                <td>
-                                    <button type="button" (click)="displayPc(a._id)" class="btn btn-outline-info mr-2">
-                                        Afficher
-                                    </button>
-                                    <button type="button" (click)="editPc(a._id)" class="btn btn-outline-success mr-2">
-                                        Modifier
-                                    </button>
-                                    <button type="button" (click)="deletePc(a._id)" class="btn btn-outline-danger mr-2">
-                                        Suppimer
-                                    </button>
-                                </td>
-                            </tr> -->
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane fade" id="nav-addPhone" role="tabpanel" aria-labelledby="nav-addPhone-tab">
-            <app-add-phone></app-add-phone>
-        </div>
-        <div class="tab-pane fade" id="nav-addComputer" role="tabpanel" aria-labelledby="nav-addComputer-tab">
-            <app-add-computer></app-add-computer>
         </div>
     </div>
 </div>
