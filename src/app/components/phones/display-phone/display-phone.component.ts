@@ -13,6 +13,7 @@ export class DisplayPhoneComponent implements OnInit {
   ngOnInit(): void {
     this.phone=this.data;
     console.log("identifiant", this.phone._id);
+
   }
 
 }

@@ -18,11 +18,8 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                            <li><i class="ti-alarm-clock"></i> <a routerLink="#">Daily deal</a></li>
-                            <li><i class="ti-user"></i> <a routerLink="#">My account</a></li>
-                            <li>
-                                <i class="ti-power-off"></i><a routerLink="login.html#">Login</a>
-                            </li>
+                            <li [routerLinkActive]="['active']"><i class="material-icons">person_add</i><a routerLink="signup">S'inscrire</a></li>
+                            <li [routerLinkActive]="['active']"><i class="material-icons">sports_kabaddi</i><a routerLink="login">Se Connecter</a></li>
                         </ul>
                     </div>
                     <!-- End Top Right -->

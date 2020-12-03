@@ -1,0 +1,33 @@
+<mat-dialog-content class="mat-typography">
+    <div class="site-section">
+        <div class="container">
+            <div class="row offset-4">
+                <form #editUserForm='ngForm' (ngSubmit)='validateEditUser()'>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-3" [(ngModel)]='user.firstName' placeholder="Prénom" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]='user.lastName' placeholder="Nom" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" [(ngModel)]='user.email' placeholder="Email" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" [(ngModel)]='user.tel' placeholder="Tél" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div>
+                        <button class="btn btn-primary mb-3" type="button" (click)='filePickerSignup.click()'>Choisir une image</button>
+                        <img src={{user.avatar}} style="width: 100px; height: 100px;">
+
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary py-3 px-5">S'inscrire</button>
+                    </div>
+                    <div class="form-group">
+                        <input style="visibility: hidden;" type="file" class="form-control" #filePickerSignup/>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

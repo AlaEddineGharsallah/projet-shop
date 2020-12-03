@@ -3,6 +3,7 @@
         <div class="nav nav-tabs" id="nav-tab" role="tablist">
             <a class="nav-item nav-link active font-weight-bold" id="nav-phones-tab" data-toggle="tab" href="#nav-phones" role="tab" aria-controls="nav-phones" aria-selected="true">Téléphones</a>
             <a class="nav-item nav-link font-weight-bold" id="nav-pcs-tab" data-toggle="tab" href="#nav-pcs" role="tab" aria-controls="nav-pcs" aria-selected="false">Ordinateurs</a>
+            <a class="nav-item nav-link font-weight-bold" id="nav-user-tab" data-toggle="tab" href="#nav-user" role="tab" aria-controls="nav-user" aria-selected="false">Users</a>
         </div>
     </nav>
     <div class="tab-content" id="nav-tabContent">
@@ -87,6 +88,43 @@
                                     </div>
                                     <div class="button d-inline mx-1">
                                         <a routerLink="#" class="btn " (click)="deleteComputers(c._id)">Suprimer</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
+            <div class="card m-3 text-center">
+                <div class="card-body">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">N°</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Prénom</th>
+                                <th scope="col">Nom</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Tél</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor='let u of users; let number=index'>
+                                <td scope="row">{{number+1}}</td>
+                                <td><img width="50px" [src]="u.avatar" alt=""></td>
+                                <td>{{u.firstName | uppercase}}</td>
+                                <td>{{u.lastName | uppercase}}</td>
+                                <td>{{u.email | uppercase}}</td>
+                                <td>{{u.tel | uppercase}}</td>
+                                <td>
+                                    <div class="button d-inline mx-1">
+                                        <a routerLink="#" class="btn" (click)='editUsers(u._id)'>Modifier</a>
+                                    </div>
+                                    <div class="button d-inline mx-1">
+                                        <a routerLink="#" class="btn " (click)="deleteUsers(u._id)">Suprimer</a>
                                     </div>
                                 </td>
                             </tr>

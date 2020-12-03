@@ -1,30 +1,15 @@
-import { Component, OnInit } from  '@angular/core';
-import {MatDialogRef, MAT_DIALOG_DATA, MatDialog} from  '@angular/material/dialog';
-import { Router } from '@angular/router';
-import { MessageComponent } from '../message/message.component';
-
-// .. other imports
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-// component metadata
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
-export  class  LoginComponent{
+export class LoginComponent implements OnInit {
 
-    public  email:  string  =  "";
-    public  password:  string  =  "";
+  constructor() { }
 
+  ngOnInit(): void {
+  }
 
-    constructor(private  dialog:  MatDialog, private  router:  Router) { }
-    login(){
-        if(this.email  ===  "email@email.com"  &&  this.password  === "p@ssw0rd")
-        {
-            this.router.navigate(['success']);
-        }
-        else
-        {
-            this.dialog.open(MessageComponent,{ data: {
-            message:  "Error!!!"
-            }});
-        }
-    }
 }

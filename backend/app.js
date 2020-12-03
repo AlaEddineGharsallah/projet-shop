@@ -255,18 +255,15 @@ app.put("/api/editComputer/:id", (req, res) => {
         os: req.body.os,
         size: req.body.size,
         cpu: req.body.cpu,
+        gpu: req.body.gpu,
         ram: req.body.ram,
         rom: req.body.rom,
         waranty: req.body.waranty,
         status: req.body.status,
         stock: req.body.stock,
+        options: req.body.options,
         color: req.body.color,
-        frontCam: req.body.frontCam,
-        backCam: req.body.backCam,
-        fingerPrint: req.body.fingerPrint,
-        sim: req.body.sim,
-        battery: req.body.battery,
-        faceId: req.body.faceId
+        image: url + '/images/' + req.file.filename
     });
 
     Computer.updateOne({ _id: req.params.id }, computer)
@@ -287,6 +284,132 @@ app.delete("/api/deleteComputer/:id", (req, res) => {
     Computer.deleteOne({ _id: req.params.id }).then(
         res.status(200).json({
             message: "Deleted computer Successfully",
+        })
+    );
+});
+
+//* Import user Model
+const User = require("./models/user");
+
+//? Add user
+app.post("/api/signupUser", multer({ storage: storage }).single('avatar'), (req, res) => {
+    console.log("Object received", req.body);
+    console.log('file', req.file);
+    url1 = req.protocol + '://' + req.get('host');
+    bcrypt.hash(req.body.pwd, 10).then(cryptedPwd => {
+        const user = new User({
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            pwd: cryptedPwd,
+            tel: req.body.tel,
+            avatar: url1 + '/images/' + req.file.filename
+        });
+        console.log('final user', user);
+        user.save(err => {
+            if (err) {
+
+                console.log(err);
+                res.status(200).json({
+                    message: err._message
+                })
+            } else {
+                res.status(200).json({
+                    message: 'user added !!'
+                })
+            }
+        })
+    })
+
+});
+
+app.post("/api/login", (req, res) => {
+    User.findOne({ email: req.body.email })
+        .then((data) => {
+            console.log("data", data);
+            if (!data) {
+                res.status(200).json({
+                    message: "0",
+                });
+            }
+            return bcrypt.compare(req.body.pwd, data.pwd);
+        })
+        .then((result) => {
+            if (!result) {
+                res.status(200).json({
+                    message: "1",
+                });
+            }
+            User.findOne({ email: req.body.email }).then(
+                (findedUser) => {
+                    const userToSend = {
+                        role: findedUser.role,
+                        firstName: findedUser.firstName,
+                        lastName: findedUser.lastName
+                    }
+                    res.status(200).json({
+                        message: "2",
+                        user: userToSend
+                    });
+                }
+            )
+        });
+});
+
+//? Display all users
+app.get("/api/myUsers", (req, res) => {
+    console.log("Here in BE allUers");
+    //* Connect to DB
+    User.find((err, documents) => {
+        if (err) {
+            console.log("Err in CNX with DB");
+        } else {
+            res.status(200).json({
+                message: "OK, here all objects",
+                users: documents,
+            });
+        }
+    });
+});
+
+//? Get user by Id
+app.get("/api/getUser/:id", (req, res) => {
+    User.findOne({ _id: req.params.id }).then((document) => {
+        console.log(document);
+        res.status(200).json({
+            user: document,
+        });
+    });
+});
+
+//? Edit user
+app.put("/api/editUser/:id", (req, res) => {
+    const user = new User({
+        _id: req.params.id,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        pwd: req.body.pwd,
+        tel: req.body.tel,
+    });
+    User.updateOne({ _id: req.params.id }, user)
+        .then(() => {
+            res.status(201).json({
+                message: "User updated successfully!",
+            });
+        })
+        .catch((error) => {
+            res.status(400).json({
+                error: error,
+            });
+        });
+});
+
+//! Delete user
+app.delete("/api/deleteUser/:id", (req, res) => {
+    User.deleteOne({ _id: req.params.id }).then(
+        res.status(200).json({
+            message: "Deleted Successfully",
         })
     );
 });

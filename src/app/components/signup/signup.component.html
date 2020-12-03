@@ -1,0 +1,56 @@
+<div class="site-section">
+    <div class="container">
+        <div class="row offset-4">
+            <form [formGroup]='signupForm'>
+                <div class="form-group">
+                    <input type="text" class="form-control mt-3" formControlName='firstName' placeholder="Prénom">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='lastName' placeholder="Nom">
+                </div>
+                <div class="form-group">
+                    <input type="email" class="form-control" formControlName='email' placeholder="Email">
+                </div>
+                <div *ngIf="signupForm.controls['email'].invalid && 
+                (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)">
+                    <div *ngIf="signupForm.controls['email'].errors.email" class="text-danger">
+                        Email Invalid !!
+                    </div>
+                    <div *ngIf="signupForm.controls['email'].errors.required" class="text-danger">
+                        Email is required !!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" formControlName='pwd' placeholder="Mot de passe">
+                </div>
+                <div *ngIf="signupForm.controls['pwd'].invalid && 
+                (signupForm.controls['pwd'].dirty || signupForm.controls['pwd'].touched)">
+                    <div *ngIf="signupForm.controls['pwd'].errors.minlength" class="alert alert-danger">
+                        Le mot de passe doit avoir au moins 8 caractères !!
+                    </div>
+                    <div *ngIf="signupForm.controls['pwd'].errors.maxlength" class="alert alert-danger">
+                        Le mot de passe doit avoir au plus 12 caractères !!
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" formControlName='confirmPwd' placeholder="Confirmation mot de passe">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" formControlName='tel' placeholder="Tél">
+                </div>
+                <div>
+                    <button class="btn btn-primary mb-3" type="button" (click)='filePickerSignup.click()'>Choisir une image</button>
+                    <img [src]="avatarPreview" *ngIf='avatarPreview' style="width: 100px; height: 100px;">
+
+                </div>
+                <div class="form-group">
+                    <button type="submit" [disabled]='signupForm.invalid' (click)='signup(signupForm.value)' class="btn btn-primary py-3 px-5">S'inscrire</button>
+                    <button type="reset" class="btn btn-primary py-3 px-5 ml-3">Réinitialiser</button>
+                </div>
+                <div class="form-group">
+                    <input style="visibility: hidden;" type="file" class="form-control" #filePickerSignup (change)='onImageSelected($event)' />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

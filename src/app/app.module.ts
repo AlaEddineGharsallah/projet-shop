@@ -20,6 +20,9 @@ import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dia
 import { AddPhoneComponent } from './components/admin/add-phone/add-phone.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { AddComputerComponent } from './components/admin/add-computer/add-computer.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { EditUserComponent } from './components/edit-user/edit-user.component';
 @NgModule({
   declarations: [
     
@@ -36,6 +39,9 @@ import { AddComputerComponent } from './components/admin/add-computer/add-comput
     AddPhoneComponent,
     AdminComponent,
     AddComputerComponent,
+    SignupComponent,
+    LoginComponent,
+    EditUserComponent,
   ],
   entryComponents:[DisplayPhoneComponent],
   imports: [
