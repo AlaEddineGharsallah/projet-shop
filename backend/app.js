@@ -345,7 +345,8 @@ app.post("/api/login", (req, res) => {
                 (findedUser) => {
                     const userToSend = {
                         firstName: findedUser.firstName,
-                        lastName: findedUser.lastName
+                        lastName: findedUser.lastName,
+                        _id: findedUser._id
                     }
                     res.status(200).json({
                         message: "2",

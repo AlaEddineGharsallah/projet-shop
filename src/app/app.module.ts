@@ -7,7 +7,6 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { ShopGridComponent } from './components/shop-grid/shop-grid.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TabPhonesComponent } from './components/phones/tab-phones/tab-phones.component';
@@ -23,6 +22,10 @@ import { AddComputerComponent } from './components/admin/add-computer/add-comput
 import { SignupComponent } from './components/signup/signup.component';
 import { LoginComponent } from './components/login/login.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { ShopGridPhonesComponent } from './components/phones/shop-grid-phones/shop-grid-phones.component';
+import { ShopGridComputersComponent } from './components/shop-grid-computers/shop-grid-computers.component';
+import { FilterPipe } from './components/pipes/filter.pipe';
+import { SortPipe } from './components/pipes/sort.pipe';
 @NgModule({
   declarations: [
     
@@ -31,7 +34,6 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     FooterComponent,
     HomeComponent,
     ContactComponent,
-    ShopGridComponent,
     CartComponent,
     CheckoutComponent,
     TabPhonesComponent,
@@ -42,6 +44,10 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     SignupComponent,
     LoginComponent,
     EditUserComponent,
+    ShopGridPhonesComponent,
+    ShopGridComputersComponent,
+    FilterPipe,
+    SortPipe
   ],
   entryComponents:[DisplayPhoneComponent],
   imports: [

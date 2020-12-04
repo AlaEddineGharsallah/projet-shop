@@ -7,7 +7,8 @@ import { CheckoutComponent } from './components/checkout/checkout.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
-import { ShopGridComponent } from './components/shop-grid/shop-grid.component';
+import { ShopGridPhonesComponent } from './components/phones/shop-grid-phones/shop-grid-phones.component';
+import { ShopGridComputersComponent } from './components/shop-grid-computers/shop-grid-computers.component';
 import { SignupComponent } from './components/signup/signup.component';
 
 const routes: Routes = [
@@ -18,8 +19,9 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'checkout', component: CheckoutComponent },
-  { path: 'shop-grid', component: ShopGridComponent },
-  { path: 'prod/:cat/:id', component: CheckoutComponent }
+  { path: 'prod/:cat/:id', component: CheckoutComponent },
+  { path: 'shop-grid-phones', component: ShopGridPhonesComponent },
+  { path: 'shop-grid-computers', component: ShopGridComputersComponent }
 
 ];
 

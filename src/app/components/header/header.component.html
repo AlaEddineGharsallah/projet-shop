@@ -1,33 +1,5 @@
 <!-- Header -->
 <header class="header shop">
-    <!-- Topbar -->
-    <div class="topbar">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-md-12 col-12">
-                    <!-- Top Left -->
-                    <div class="top-left">
-                        <ul class="list-main">
-                            <li><i class="ti-headphone-alt"></i>71 500 401-71 500 402</li>
-                            <li><i class="ti-email"></i>info@eshop.com / contact@eshop.com</li>
-                        </ul>
-                    </div>
-                    <!--/ End Top Left -->
-                </div>
-                <div class="col-lg-7 col-md-12 col-12">
-                    <!-- Top Right -->
-                    <div class="right-content">
-                        <ul class="list-main">
-                            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><i class="material-icons">person_add</i><a routerLink="signup">S'inscrire</a></li>
-                            <li [routerLinkActive]="['active']"><i class="material-icons">sports_kabaddi</i><a routerLink="login">Se Connecter</a></li>
-                        </ul>
-                    </div>
-                    <!-- End Top Right -->
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- End Topbar -->
     <div class="middle-inner">
         <div class="container">
             <div class="row">
@@ -37,41 +9,18 @@
                         <a routerLink="index.html"><img src="assets/images/logo.png" alt="logo" /></a>
                     </div>
                     <!--/ End Logo -->
-                    <!-- Search Form -->
-                    <div class="search-top">
-                        <div class="top-search">
-                            <a routerLink="#0"><i class="ti-search"></i></a>
-                        </div>
-                        <!-- Search Form -->
-                        <div class="search-top">
-                            <form class="search-form">
-                                <input type="text" placeholder="Search here..." name="search" />
-                                <button value="search" type="submit">
-                                    <i class="ti-search"></i>
-                                </button>
-                            </form>
-                        </div>
-                        <!--/ End Search Form -->
-                    </div>
-                    <!--/ End Search Form -->
-                    <div class="mobile-nav"></div>
                 </div>
                 <div class="col-lg-8 col-md-7 col-12">
                     <div class="search-bar-top">
                         <div class="search-bar">
-                            <select>
-                                <option selected="selected">All Category</option>
-                                <option>watch</option>
-                                <option>mobile</option>
-                                <option>kid’s item</option>
-                            </select>
                             <form>
-                                <input name="search" placeholder="Search Products Here....." type="search" />
+                                <input name="search" placeholder="Recherche produit ici....." type="search" />
                                 <button class="btnn"><i class="ti-search"></i></button>
                             </form>
                         </div>
                     </div>
                 </div>
+                <!--  Panier à  remplir dynamiquement-->
                 <div class="col-lg-2 col-md-3 col-12">
                     <div class="right-bar">
                         <!-- Search Form -->
@@ -137,70 +86,28 @@
                             </h3>
                             <ul class="main-category">
                                 <li>
-                                    <a routerLink="#">New Arrivals
+                                    <a routerLink="#">Nouveaux
                                         <i class="fa fa-angle-right" aria-hidden="true"></i></a>
                                     <ul class="sub-category">
-                                        <li><a routerLink="#">accessories</a></li>
-                                        <li><a routerLink="#">best selling</a></li>
-                                        <li><a routerLink="#">top 100 offer</a></li>
-                                        <li><a routerLink="#">sunglass</a></li>
-                                        <li><a routerLink="#">watch</a></li>
-                                        <li><a routerLink="#">man’s product</a></li>
-                                        <li><a routerLink="#">ladies</a></li>
-                                        <li><a routerLink="#">westrn dress</a></li>
-                                        <li><a routerLink="#">denim </a></li>
+                                        <li><a routerLink=''>Accessories</a></li>
+                                        <li><a routerLink=''>Top Promo</a></li>
+                                        <li><a routerLink=''>Top 100 offeres</a></li>
+                                        <li><a routerLink="phones">Téléphones</a></li>
+                                        <li><a routerLink="computers">Ordinateurs</a></li>
+
                                     </ul>
                                 </li>
                                 <li class="main-mega">
-                                    <a routerLink="#">best selling
-                                        <i class="fa fa-angle-right" aria-hidden="true"></i></a>
-                                    <ul class="mega-menu">
-                                        <li class="single-menu">
-                                            <a routerLink="#" class="title-link">Shop Kid's</a>
-                                            <div class="image">
-                                                <img src="https://via.placeholder.com/225x155" alt="#" />
-                                            </div>
-                                            <div class="inner-link">
-                                                <a routerLink="#">Kids Toys</a>
-                                                <a routerLink="#">Kids Travel Car</a>
-                                                <a routerLink="#">Kids Color Shape</a>
-                                                <a routerLink="#">Kids Tent</a>
-                                            </div>
-                                        </li>
-                                        <li class="single-menu">
-                                            <a routerLink="#" class="title-link">Shop Men's</a>
-                                            <div class="image">
-                                                <img src="https://via.placeholder.com/225x155" alt="#" />
-                                            </div>
-                                            <div class="inner-link">
-                                                <a routerLink="#">Watch</a>
-                                                <a routerLink="#">T-shirt</a>
-                                                <a routerLink="#">Hoodies</a>
-                                                <a routerLink="#">Formal Pant</a>
-                                            </div>
-                                        </li>
-                                        <li class="single-menu">
-                                            <a routerLink="#" class="title-link">Shop Women's</a>
-                                            <div class="image">
-                                                <img src="https://via.placeholder.com/225x155" alt="#" />
-                                            </div>
-                                            <div class="inner-link">
-                                                <a routerLink="#">Ladies Shirt</a>
-                                                <a routerLink="#">Ladies Frog</a>
-                                                <a routerLink="#">Ladies Sun Glass</a>
-                                                <a routerLink="#">Ladies Watch</a>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <a routerLink="#">Top Promo</a>
                                 </li>
-                                <li><a routerLink="#">accessories</a></li>
-                                <li><a routerLink="#">top 100 offer</a></li>
-                                <li><a routerLink="#">sunglass</a></li>
-                                <li><a routerLink="#">watch</a></li>
-                                <li><a routerLink="#">man’s product</a></li>
-                                <li><a routerLink="#">ladies</a></li>
-                                <li><a routerLink="#">westrn dress</a></li>
-                                <li><a routerLink="#">denim </a></li>
+                                <li><a routerLink="">Accessories</a></li>
+                                <li><a routerLink="">Top 100 offeres</a></li>
+                                <li><a routerLink="">Téléphones</a></li>
+                                <li><a routerLink="">Ordinateurs</a></li>
+                                <li><a routerLink="">Montre homme</a></li>
+                                <li><a routerLink="">Montre femme</a></li>
+                                <li><a routerLink="">Tablettes</a></li>
+                                <li><a routerLink="">Caméra</a></li>
                             </ul>
                         </div>
                     </div>
@@ -217,21 +124,14 @@
                                                 <a routerLink='new'>Shop<i class="ti-angle-down"></i><span
                                                         class="new">New</span></a>
                                                 <ul class="dropdown">
-                                                    <li><a routerLink="shop-grid">Shop Grid</a></li>
-                                                    <li><a routerLink="cart">Cart</a></li>
-                                                    <li><a routerLink="checkout">Checkout</a></li>
+                                                    <li><a routerLink="shop-grid-phones">Phones</a></li>
+                                                    <li><a routerLink="shop-grid-computers">Ordinateurs</a></li>
                                                 </ul>
                                             </li>
                                             <li [routerLinkActive]="['active']"><a routerLink="pages">Pages</a></li>
-                                            <li [routerLinkActive]="['active']">
-                                                <a routerLink="ti-angle-down">Blog<i class="ti-angle-down"></i></a>
-                                                <ul class="dropdown">
-                                                    <li>
-                                                        <a routerLink="blog-single-sidebar">Blog Single Sidebar</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
                                             <li [routerLinkActive]="['active']"><a routerLink="contact">Contact</a></li>
+                                            <li [routerLinkActive]="['active']"><a routerLink="signup">S'inscrire</a></li>
+                                            <li [routerLinkActive]="['active']"><a routerLink="login">Se Connecter</a></li>
                                         </ul>
                                     </div>
                                 </div>

@@ -1,5 +1,5 @@
 <h2>Détails produit</h2>
-<mat-dialog-content class="mat-typography">
+<mat-dialog-content class="mat-typography" style="width: 1000px;height: 450px;">
     <div class="row no-gutters">
         <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
             <!-- Product Slider -->
@@ -53,7 +53,7 @@
                         <span>{{phone.rom| titlecase}}</span> - Appareil Photo
                         <span>{{phone.backCam| titlecase}}</span> (Arriére), <span>{{phone.frontCam| titlecase}}</span> (Avant) - Capacité de Batterie: <span>{{phone.battery| titlecase}}</span> - Sim: <span>{{phone.sim| titlecase}}</span> - Empreinte
                         digitale:
-                        <span>{{phone.fingerPrint| titlecase}}</span> - Couleur: <span *ngFor=" let c of phone.color"> {{ c | titlecase}} </span> - Garantie: <span>{{phone.waranty| titlecase}}</span>
+                        <span>{{phone.fingerPrint| titlecase}}</span> - Couleur: <span *ngFor=" let c of phone.color"> {{ c | titlecase}} </span> - Garantie: <span>{{phone.waranty| titlecase}}</span>- Etat: <span>{{phone.status| titlecase}}</span>
                     </p>
                 </div>
                 <div class="size">
@@ -61,8 +61,8 @@
                         <div class="col-lg-12 col-12">
                             <h5 class="title">Couleurs </h5>
                             <select>
-                          <option *ngFor=" let c of phone.color">{{c|titlecase}}</option>
-                         </select>
+                              <option *ngFor=" let c of phone.color">{{c|titlecase}}</option>
+                             </select>
                         </div>
                     </div>
                 </div>
@@ -80,9 +80,9 @@
                     <!--/ End Input Order -->
                 </div>
                 <div class="add-to-cart">
-                    <a class="btn" (click)='submitOrder.click()'>Ajouter au panier {{phone._id}}</a>
+                    <a class="btn" (click)='submitOrder.click()'>Ajouter au panier</a>
                     <a href="#" class="btn min"><i class="ti-heart"></i></a>
-                    <a href="#" class="btn min"><i class="fa fa-compress"></i></a>
+                    <a href="#" class="btn min"><i mat-button mat-dialog-close class="fa fa-compress"></i></a>
                 </div>
                 <div class="default-social">
                     <h4 class="share-now">Partager</h4>

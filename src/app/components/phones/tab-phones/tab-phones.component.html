@@ -22,10 +22,10 @@
     </div>
     <div class="product-content">
         <h3>
-            <a href="product-details.html">{{phone.brand}} {{phone.id}}</a>
+            <a href="product-details.html">{{phone.brand | uppercase}}</a>
         </h3>
         <div class="product-price">
-            <span>${{phone.price}}</span>
+            <span style="color: #d7941d; font-weight: bold;">{{phone.price}} DT</span>
         </div>
     </div>
 </div>

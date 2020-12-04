@@ -1,0 +1,10 @@
+.filter {
+    color: white;
+    background-color: black;
+    font-size: 14px;
+}
+
+.filter:hover {
+    background: #F7941D;
+    color: #fff;
+}

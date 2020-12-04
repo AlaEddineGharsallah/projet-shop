@@ -1468,12 +1468,12 @@ Version:1.0
 }
 
 .hero-slider .single-slider {
-    height: auto;
-    background-image: url('https://via.placeholder.com/1900x700');
+    background-image: url('assets/images/pc desktop gamer.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: absolute;
     background-repeat: no-repeat;
-    height: 510px;
+    height: 520px;
+    width: 1300px;
 }
 
 .hero-slider .text-inner {}
