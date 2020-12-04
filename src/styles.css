@@ -1468,6 +1468,7 @@ Version:1.0
 }
 
 .hero-slider .single-slider {
+    margin-left: 15%;
     background-image: url('assets/images/pc desktop gamer.jpg');
     background-size: cover;
     background-position: absolute;
