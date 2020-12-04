@@ -17,3 +17,18 @@
 a>h1 {
     color: black;
 }
+
+div>div>div>div>a {
+    color: black;
+    font-size: 14px;
+}
+
+div>div>div>div>a.active {
+    background: #F7941D;
+    color: #fff;
+}
+
+div>div>div>div>a:hover {
+    background: #F7941D;
+    color: #fff;
+}

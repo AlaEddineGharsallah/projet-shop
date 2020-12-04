@@ -324,7 +324,8 @@ app.post("/api/signupUser", multer({ storage: storage }).single('avatar'), (req,
 });
 
 app.post("/api/login", (req, res) => {
-    User.findOne({ email: req.body.email })
+    console.log(req.body.pwd);
+    User.findOne({ email: req.body.email.toLowerCase() })
         .then((data) => {
             console.log("data", data);
             if (!data) {
@@ -340,10 +341,9 @@ app.post("/api/login", (req, res) => {
                     message: "1",
                 });
             }
-            User.findOne({ email: req.body.email }).then(
+            User.findOne({ email: req.body.email.toLowerCase() }).then(
                 (findedUser) => {
                     const userToSend = {
-                        role: findedUser.role,
                         firstName: findedUser.firstName,
                         lastName: findedUser.lastName
                     }
@@ -413,7 +413,33 @@ app.delete("/api/deleteUser/:id", (req, res) => {
         })
     );
 });
+//* import cart Model
+const Cart = require('./models/cart')
+    //!cart cart 
+    //*get cart items
+app.get("/api/getCart", (req, res) => {
+        Cart.find().then(document => {
+            res.status(200).json({
+                cart: document,
+                message: 'ok !!'
+            })
+        })
+    })
+    //*add cart item
+app.post('/api/addCartItem', (req, res) => {
+        console.log('cart aded');
+        const cart = new Cart({
+            productId: req.body.productId,
+            quantity: req.body.quantity,
+            coll: req.body.coll
+        })
+        cart.save().then(
+            res.status(200).json({
+                message: 'okokokkôko!!'
+            })
+        )
 
-
-//* Export app
+    })
+    //*
+    //* Export app
 module.exports = app;

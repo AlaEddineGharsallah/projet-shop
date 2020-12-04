@@ -11,9 +11,9 @@
             <div class="card m-3 text-center">
                 <div class="card-body">
 
-                    <table class="table">
+                    <table class="table font-weight-bold">
                         <thead>
-                            <tr>
+                            <tr style="background-color:#F7941D;">
                                 <th scope="col">N°</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Modele</th>
@@ -36,13 +36,13 @@
                                 <td>{{p.stock | uppercase}}</td>
                                 <td>
                                     <div class="button d-inline mx-1">
-                                        <a routerLink="#" class="btn" (click)="displayPhones(p)">Afficher</a>
+                                        <a routerLink="#" class="btn px-2 py-2" style="border-radius: 10px;" (click)="displayPhones(p)">Afficher</a>
                                     </div>
                                     <div class="button d-inline mx-1">
-                                        <a routerLink="#" class="btn" (click)="editPhones(p._id)">Modifier</a>
+                                        <a routerLink="#" class="btn px-2 py-2" style="border-radius: 10px;" (click)="editPhones(p._id)">Modifier</a>
                                     </div>
                                     <div class="button d-inline mx-1">
-                                        <a routerLink="#" class="btn " (click)="deletePhones(p._id)">Suprimer</a>
+                                        <a routerLink="#" class="btn px-2 py-2" style="border-radius: 10px;" (click)="deletePhones(p._id)">Suprimer</a>
                                     </div>
                                 </td>
 
@@ -56,9 +56,9 @@
         <div class="tab-pane fade" id="nav-pcs" role="tabpanel" aria-labelledby="nav-pcs-tab">
             <div class="card m-3 text-center">
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table font-weight-bold">
                         <thead>
-                            <tr>
+                            <tr style="background-color:#F7941D;">
                                 <th scope="col">N°</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Modele</th>
@@ -81,13 +81,13 @@
                                 <td>{{c.stock | uppercase}}</td>
                                 <td>
                                     <div class="button d-inline mx-1">
-                                        <a routerLink="#" class="btn" (click)="displayComputers(c)">Afficher</a>
+                                        <a routerLink="#" class="btn px-2 py-2" style="border-radius: 10px;" (click)="displayComputers(c)">Afficher</a>
                                     </div>
                                     <div class="button d-inline mx-1">
-                                        <a routerLink="#" class="btn" (click)='editComputers(c._id)'>Modifier</a>
+                                        <a routerLink="#" class="btn px-2 py-2" style="border-radius: 10px;" (click)='editComputers(c._id)'>Modifier</a>
                                     </div>
                                     <div class="button d-inline mx-1">
-                                        <a routerLink="#" class="btn " (click)="deleteComputers(c._id)">Suprimer</a>
+                                        <a routerLink="#" class="btn px-2 py-2" style="border-radius: 10px;" (click)="deleteComputers(c._id)">Suprimer</a>
                                     </div>
                                 </td>
                             </tr>
@@ -99,9 +99,9 @@
         <div class="tab-pane fade" id="nav-user" role="tabpanel" aria-labelledby="nav-user-tab">
             <div class="card m-3 text-center">
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table font-weight-bold">
                         <thead>
-                            <tr>
+                            <tr style="background-color:#F7941D;">
                                 <th scope="col">N°</th>
                                 <th scope="col">Image</th>
                                 <th scope="col">Prénom</th>
@@ -114,17 +114,17 @@
                         <tbody>
                             <tr *ngFor='let u of users; let number=index'>
                                 <td scope="row">{{number+1}}</td>
-                                <td><img width="50px" [src]="u.avatar" alt=""></td>
+                                <td><img style="width: 50px; height: 50px;" [src]="u.avatar" alt=""></td>
                                 <td>{{u.firstName | uppercase}}</td>
                                 <td>{{u.lastName | uppercase}}</td>
                                 <td>{{u.email | uppercase}}</td>
                                 <td>{{u.tel | uppercase}}</td>
                                 <td>
                                     <div class="button d-inline mx-1">
-                                        <a routerLink="#" class="btn" (click)='editUsers(u._id)'>Modifier</a>
+                                        <a routerLink="#" class="btn px-2 py-2" style="border-radius: 10px;" (click)='editUsers(u._id)'>Modifier</a>
                                     </div>
                                     <div class="button d-inline mx-1">
-                                        <a routerLink="#" class="btn " (click)="deleteUsers(u._id)">Suprimer</a>
+                                        <a routerLink="#" class="btn px-2 py-2" style="border-radius: 10px;" (click)="deleteUsers(u._id)">Suprimer</a>
                                     </div>
                                 </td>
                             </tr>

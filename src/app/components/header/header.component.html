@@ -18,7 +18,7 @@
                     <!-- Top Right -->
                     <div class="right-content">
                         <ul class="list-main">
-                            <li [routerLinkActive]="['active']"><i class="material-icons">person_add</i><a routerLink="signup">S'inscrire</a></li>
+                            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><i class="material-icons">person_add</i><a routerLink="signup">S'inscrire</a></li>
                             <li [routerLinkActive]="['active']"><i class="material-icons">sports_kabaddi</i><a routerLink="login">Se Connecter</a></li>
                         </ul>
                     </div>
@@ -212,7 +212,6 @@
                                     <div class="nav-inner">
                                         <ul class="nav main-menu menu navbar-nav">
                                             <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}"><a routerLink=''>Accueil</a></li>
-                                            <li [routerLinkActive]="['active']"><a routerLink='produits'>Product</a></li>
                                             <li [routerLinkActive]="['active']"><a routerLink='admin'>Admin</a></li>
                                             <li [routerLinkActive]="['active']">
                                                 <a routerLink='new'>Shop<i class="ti-angle-down"></i><span
