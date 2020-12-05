@@ -10,7 +10,7 @@
                     </div>
                     <!--/ End Logo -->
                 </div>
-                <div class="col-lg-8 col-md-7 col-12">
+                <div class="col-lg-5 col-md-7 col-12">
                     <div class="search-bar-top">
                         <div class="search-bar">
                             <form>
@@ -21,53 +21,46 @@
                     </div>
                 </div>
                 <!--  Panier à  remplir dynamiquement-->
-                <div class="col-lg-2 col-md-3 col-12">
+                <div class="col-lg-5 col-md-3 col-12">
                     <div class="right-bar">
                         <!-- Search Form -->
                         <div class="sinlge-bar">
                             <a routerLink="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
                         </div>
-                        <div class="sinlge-bar">
-                            <a routerLink="#" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                        </div>
                         <div class="sinlge-bar shopping">
                             <a routerLink="#" class="single-icon"><i class="ti-bag"></i> <span
-                                    class="total-count">2</span></a>
+                                    class="total-count">{{itemCount}}</span></a>
                             <!-- Shopping Item -->
                             <div class="shopping-item">
                                 <div class="dropdown-cart-header">
-                                    <span>2 Items</span>
+                                    <span>{{itemCount}} Items</span>
                                     <a routerLink="#">View Cart</a>
                                 </div>
                                 <ul class="shopping-list">
-                                    <li>
+                                    <li *ngFor="let c of allCarts">
                                         <a routerLink="#" class="remove" title="Remove this item"><i
                                                 class="fa fa-remove"></i></a>
-                                        <a class="cart-img" routerLink="#"><img src="https://via.placeholder.com/70x70" alt="#" /></a>
-                                        <h4><a routerLink="#">Woman Ring</a></h4>
+                                        <a class="cart-img" routerLink="#"><img [src]="c.product.image" alt="#" /></a>
+                                        <h4><a routerLink="#">{{c.product.brand}}{{c.product.model}}</a></h4>
                                         <p class="quantity">
-                                            1x - <span class="amount">$99.00</span>
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <a routerLink="#" class="remove" title="Remove this item"><i
-                                                class="fa fa-remove"></i></a>
-                                        <a class="cart-img" routerLink="#"><img src="https://via.placeholder.com/70x70" alt="#" /></a>
-                                        <h4><a routerLink="#">Woman Necklace</a></h4>
-                                        <p class="quantity">
-                                            1x - <span class="amount">$35.00</span>
+                                            {{c.quantity}}x - <span class="amount">{{c.product.price}} TND</span>
                                         </p>
                                     </li>
                                 </ul>
                                 <div class="bottom">
                                     <div class="total">
                                         <span>Total</span>
-                                        <span class="total-amount">$134.00</span>
+                                        <span class="total-amount">{{total}} TND</span>
                                     </div>
                                     <a routerLink="checkout.html" class="btn animate">Checkout</a>
                                 </div>
                             </div>
                             <!--/ End Shopping Item -->
+                        </div>
+                        <div class="sinlge-bar">
+                            <span [routerLinkActive]="['active']" style="font-size: large; font-weight: bold; color: #f7941d;" class="mr-3" *ngIf="user"><a><span style="color: black;">Bonjour</span> {{user.firstName|titlecase}} {{user.lastName|titlecase}}</a>
+                            </span>
+                            <span *ngIf="user"><img  class="rounded-circle" [src]="user.avatar" style="width: 60px; height: 60px;"></span>
                         </div>
                     </div>
                 </div>
@@ -111,7 +104,7 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="col-lg-9 col-12">
+                    <div class="col-lg-8">
                         <div class="menu-area">
                             <!-- Main Menu -->
                             <nav class="navbar navbar-expand-lg">
@@ -128,10 +121,10 @@
                                                     <li><a routerLink="shop-grid-computers">Ordinateurs</a></li>
                                                 </ul>
                                             </li>
-                                            <li [routerLinkActive]="['active']"><a routerLink="pages">Pages</a></li>
                                             <li [routerLinkActive]="['active']"><a routerLink="contact">Contact</a></li>
-                                            <li [routerLinkActive]="['active']"><a routerLink="signup">S'inscrire</a></li>
-                                            <li [routerLinkActive]="['active']"><a routerLink="login">Se Connecter</a></li>
+                                            <li [routerLinkActive]="['active']" *ngIf='!user'><a routerLink="signup">S'inscrire</a></li>
+                                            <li [routerLinkActive]="['active']" *ngIf="!user"><a routerLink="login">Se Connecter</a></li>
+                                            <li [routerLinkActive]="['active']" *ngIf="user"><a (click)="logout()">Se Déconnecter</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -150,7 +143,6 @@
         <div class="single-slider">
             <div class="container">
                 <div class="row no-gutters">
-
                 </div>
             </div>
         </div>

@@ -84,7 +84,7 @@ app.get('/api/phones', (req, res) => {
         if (!err) {
             res.status(201).json({
                 phones: documents,
-                message: 'ok !!'
+                message: 'phones'
             })
         }
     })
@@ -191,7 +191,7 @@ app.get('/api/computers', (req, res) => {
             if (!err) {
                 res.status(200).json({
                     computers: documents,
-                    message: 'ok !!'
+                    message: 'computers'
                 })
             }
         })
@@ -202,7 +202,7 @@ app.get('/api/getComputer/:id', (req, res) => {
             document => {
                 res.status(200).json({
                     computer: document,
-                    message: 'this is your computer!!'
+                    message: 'computer'
                 })
             }
         )
@@ -346,7 +346,8 @@ app.post("/api/login", (req, res) => {
                     const userToSend = {
                         firstName: findedUser.firstName,
                         lastName: findedUser.lastName,
-                        _id: findedUser._id
+                        _id: findedUser._id,
+                        avatar: findedUser.avatar
                     }
                     res.status(200).json({
                         message: "2",
@@ -418,8 +419,9 @@ app.delete("/api/deleteUser/:id", (req, res) => {
 const Cart = require('./models/cart')
     //!cart cart 
     //*get cart items
-app.get("/api/getCart", (req, res) => {
-        Cart.find().then(document => {
+app.get("/api/getCart/:id", (req, res) => {
+        console.log(req.params.id);
+        Cart.find({ userId: req.params.id }).then(document => {
             res.status(200).json({
                 cart: document,
                 message: 'ok !!'
@@ -432,11 +434,12 @@ app.post('/api/addCartItem', (req, res) => {
         const cart = new Cart({
             productId: req.body.productId,
             quantity: req.body.quantity,
-            coll: req.body.coll
+            coll: req.body.coll,
+            userId: req.body.userId
         })
         cart.save().then(
             res.status(200).json({
-                message: 'okokokkôko!!'
+                message: 'Item added to cart!!'
             })
         )
 

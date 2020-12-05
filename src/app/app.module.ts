@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { ShopGridComponent } from './components/shop-grid/shop-grid.component';
 import { CartComponent } from './components/cart/cart.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
 import { TabPhonesComponent } from './components/phones/tab-phones/tab-phones.component';
@@ -34,6 +35,7 @@ import { SortPipe } from './components/pipes/sort.pipe';
     FooterComponent,
     HomeComponent,
     ContactComponent,
+    ShopGridComponent,
     CartComponent,
     CheckoutComponent,
     TabPhonesComponent,

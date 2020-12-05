@@ -70,7 +70,7 @@
                     <!-- Input Order -->
                     <form #cartFrom='ngForm' (ngSubmit)='addOrder()'>
                         <div class="form-group">
-                            <input type="text" [(ngModel)]='cart.quantity' [ngModelOptions]="{standalone: true}">
+                            <input type="number" [(ngModel)]='cart.quantity' [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="form-group">
                             <button type="submit" #submitOrder hidden>ddd</button>

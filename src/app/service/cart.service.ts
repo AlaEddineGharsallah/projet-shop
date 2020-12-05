@@ -7,8 +7,8 @@ import { Injectable } from '@angular/core';
 export class CartService {
   cartUrl = "http://localhost:3000"
   constructor(private httpClient:HttpClient) { }
-  getAll(id:string){
-    return this.httpClient.get(`${this.cartUrl}/api/getProduct/${id}`);
+  getAllCart(id:string){
+    return this.httpClient.get<{cart:any,message:string}>(`${this.cartUrl}/api/getCart/${id}`);
 
   }
   addCart(item:any){

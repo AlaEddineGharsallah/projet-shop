@@ -55,7 +55,7 @@
                             <div class="tab-single">
                                 <div class="row">
                                     <div *ngFor="let p of filtredPhones" class="col-xl-4 col-lg-4 col-md-4 col-12">
-                                        <app-tab-phones [phone]='p'></app-tab-phones>
+                                        <app-tab-phones [phone]='p' [coll]='coll'></app-tab-phones>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +71,7 @@
                                     <li class="nav-item" *ngFor='let c of brandsComputers'>
                                         <a class="nav-link" [ngClass]='{active: c===filtredComputers[0].brand}' data-toggle="tab" href="#c" role="tab" (click)='getComputersByType(c)'>{{c}}</a>
                                     </li>
-                                </ul>
+                                </ul>&x
                                 <!--/ End Tab Nav -->
                             </div>
                             <!-- Start Single Tab -->
@@ -79,7 +79,7 @@
                                 <div class="tab-single">
                                     <div class="row">
                                         <div *ngFor="let c of filtredComputers" class="col-xl-4 col-lg-4 col-md-4 col-12">
-                                            <app-tab-phones [phone]='c'></app-tab-phones>
+                                            <app-tab-phones [phone]='c' [coll]='coll'></app-tab-phones>
                                         </div>
                                     </div>
                                 </div>

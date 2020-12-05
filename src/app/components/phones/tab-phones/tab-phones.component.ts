@@ -11,6 +11,7 @@ import { DisplayPhoneComponent } from '../display-phone/display-phone.component'
 })
 export class TabPhonesComponent implements OnInit {
 @Input() phone:any;
+@Input() coll:string;
 showPhone:any=[];
   constructor(public dialog: MatDialog){ }
  
@@ -19,7 +20,8 @@ showPhone:any=[];
   }
   
   openDialog() {
-    this.dialog.open(DisplayPhoneComponent,{data:this.phone});
+    this.dialog.open(DisplayPhoneComponent,{data:{object:this.phone,coll:this.coll}});
+    
     
   }
 }

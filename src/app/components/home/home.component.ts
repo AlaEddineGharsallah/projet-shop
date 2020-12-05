@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   brandsComputers: any;
   computers: any = [];
   filtredComputers: any = [];
+  coll:string;
  
   constructor(
     private phoneService: PhonesService,
@@ -25,6 +26,7 @@ export class HomeComponent implements OnInit {
     this.phoneService.getAllPhones().subscribe(
       (data) => {
         this.phones = data.phones;
+        this.coll=data.message;
         console.log('all phones', this.phones);
         this.getBrandsPhones();
         console.log("Phones brands",this.brandsPhones);
@@ -35,6 +37,8 @@ export class HomeComponent implements OnInit {
     this.computerService.getComputers().subscribe(
       (data) => {
         this.computers = data.computers;
+        this.coll = data.message;
+
         console.log('all computers', this.computers);
         this.getBrandsComputers();
         console.log("Computers brands",this.brandsComputers);
@@ -54,6 +58,7 @@ export class HomeComponent implements OnInit {
   //* Get all brands of phones
   getBrandsPhones() {
     this.brandsPhones = [...new Map(this.phones.map(item => [item.brand, item.brand])).values()];
+    this.coll="phones"
   }
 
   //* Get computers by type

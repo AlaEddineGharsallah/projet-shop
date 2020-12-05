@@ -31,7 +31,7 @@
             <span>Taille Ecran: {{phone.size| uppercase}}</span>
         </div>
         <div class="product-price">
-            <span>Caméra Frontale: {{phone.frontCam| uppercase}}</span>
+            <span *ngIf='phone.frontCam'>Caméra Frontale: {{phone.frontCam| uppercase}}</span>
         </div>
         <div class="product-price">
             <span>Caméra Arrière: {{phone.backCam| uppercase}}</span>

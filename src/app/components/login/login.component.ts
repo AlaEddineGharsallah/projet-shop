@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
     this.userService.loginUser(this.userConnected).subscribe((data) => {
       if (data.message === '2') {
         localStorage.setItem('userConnected', JSON.stringify(data.user));
+        location.reload();
         if (data.user.role === 'admin') {
           this.router.navigate(['admin']);
         } else {
