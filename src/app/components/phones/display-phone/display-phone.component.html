@@ -7,23 +7,17 @@
                 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner" style="margin-top: 8%;">
                         <div class="carousel-item active">
-                            <img class="d-block" src="https://via.placeholder.com/570x400" alt="First slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block" src="https://via.placeholder.com/570x400" alt="Second slide">
-                        </div>
-                        <div class="carousel-item">
-                            <img class="d-block" src="https://via.placeholder.com/570x400" alt="Third slide">
+                            <img class="d-block" src={{phone.image}} style="width: 570px;height: 400px;">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                    <!-- <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                         <span class="sr-only">Precédent</span>
                     </a>
                     <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Suivant</span>
-                    </a>
+                    </a> -->
                 </div>
             </div>
             <!-- End Product slider -->
@@ -53,7 +47,7 @@
                         <span>{{phone.rom| titlecase}}</span> - Appareil Photo
                         <span>{{phone.backCam| titlecase}}</span> (Arriére), <span>{{phone.frontCam| titlecase}}</span> (Avant) - Capacité de Batterie: <span>{{phone.battery| titlecase}}</span> - Sim: <span>{{phone.sim| titlecase}}</span> - Empreinte
                         digitale:
-                        <span>{{phone.fingerPrint| titlecase}}</span> - Couleur: <span *ngFor=" let c of phone.color"> {{ c | titlecase}} </span> - Garantie: <span>{{phone.waranty| titlecase}}</span>- Etat: <span>{{phone.status| titlecase}}</span>
+                        <span>{{phone.fingerPrint| titlecase}}</span> - Couleur: <span *ngFor=" let c of phone.color"> {{ c | titlecase}} </span> - Garantie: <span>{{phone.waranty| titlecase}}</span> <span *ngIf='phone.status'>- Etat: <span>{{phone.status| titlecase}}</span></span>
                     </p>
                 </div>
                 <div class="size">
@@ -73,17 +67,18 @@
                             <input type="number" [(ngModel)]='cart.quantity' [ngModelOptions]="{standalone: true}">
                         </div>
                         <div class="form-group">
-                            <button type="submit" #submitOrder hidden>ddd</button>
+                            <button type="submit" #submitOrder hidden>hiden add to cart button </button>
                         </div>
 
                     </form>
                     <!--/ End Input Order -->
                 </div>
                 <div class="add-to-cart">
-                    <a class="btn" (click)='submitOrder.click()'>Ajouter au panier</a>
+                    <a *ngIf='user' mat-button mat-dialog-close class="btn" (click)='submitOrder.click()'>Ajouter au panier</a>
                     <a href="#" class="btn min"><i class="ti-heart"></i></a>
-                    <a href="#" class="btn min"><i mat-button mat-dialog-close class="fa fa-compress"></i></a>
+                    <a href="#" class="btn min "><i mat-button mat-dialog-close class="fa fa-compress"></i></a>
                 </div>
+                <div class="msg" *ngIf="!user">Pour commander. Connecter-vous SVP, cliquez <a mat-button mat-dialog-close routerLink='login'><u>ici</u> </a></div>
                 <div class="default-social">
                     <h4 class="share-now">Partager</h4>
                     <ul>

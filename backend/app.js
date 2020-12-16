@@ -430,19 +430,26 @@ app.get("/api/getCart/:id", (req, res) => {
     })
     //*add cart item
 app.post('/api/addCartItem', (req, res) => {
-        console.log('cart aded');
-        const cart = new Cart({
-            productId: req.body.productId,
-            quantity: req.body.quantity,
-            coll: req.body.coll,
-            userId: req.body.userId
+    console.log('cart aded');
+    const cart = new Cart({
+        productId: req.body.productId,
+        quantity: req.body.quantity,
+        coll: req.body.coll,
+        userId: req.body.userId
+    })
+    cart.save().then(
+        res.status(200).json({
+            message: 'Item added to cart!!'
         })
-        cart.save().then(
+    )
+
+})
+app.delete('/api/delete/:id', (req, res) => {
+        Cart.deleteOne({ _id: req.params.id }).then(
             res.status(200).json({
-                message: 'Item added to cart!!'
+                message: 'cart deleted!!'
             })
         )
-
     })
     //*
     //* Export app

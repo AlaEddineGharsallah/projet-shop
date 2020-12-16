@@ -14,5 +14,8 @@ export class CartService {
   addCart(item:any){
     return this.httpClient.post(`${this.cartUrl}/api/addCartItem`,item);
   }
+  deleteCart(id:string){
+    return this.httpClient.delete(`${this.cartUrl}/api/delete/${id}`)
+  }
 
 }

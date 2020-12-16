@@ -30,16 +30,16 @@
                     </thead>
                     <tbody>
                         <tr *ngFor='let c of allCarts'>
-                            <td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
+                            <td class="image" data-title="No"><img [src]="c.product.image" alt="#"></td>
                             <td class="product-des" data-title="Description">
-                                <p class="product-name"><a>{{c.product.brand}} {{c.product.model}}</a></p>
-                                <p class="product-des">Maboriosam in a tonto nesciung eget distingy magndapibus.</p>
+                                <p class="product-name"><a>{{c.product.brand |titlecase}} <span *ngIf='c.product.model!="undefined"'>{{c.product.model |titlecase}}</span></a></p>
+                                <p class="product-des">Reférence: {{c.product.ref |titlecase}} </p>
                             </td>
                             <td class="price" data-title="Price"><span>{{c.product.price}} </span></td>
                             <td class="price" data-title="Price"><span>{{c.quantity}} </span></td>
-                            
+
                             <td class="total-amount" data-title="Total"><span>{{c.totalPrice}}</span></td>
-                            <td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
+                            <td class="action" data-title="Remove"><a (click)='delete(c._id,c.totalPrice)'><i class="ti-trash remove-icon"></i></a></td>
                         </tr>
                     </tbody>
                 </table>
@@ -67,13 +67,12 @@
                             <div class="right">
                                 <ul>
                                     <li>Cart Subtotal<span>{{total}}</span></li>
-                                    <li>Shipping<span *ngIf='total > 300'>Free</span><span
-                                        *ngIf='!(total > 300)'>10 TND</span></li>
+                                    <li>Shipping<span *ngIf='total > 300'>Free</span><span *ngIf='!(total > 300)'>10 TND</span></li>
                                     <li class="last">You Pay<span *ngIf='total> 300'>{{total }} TND</span>
-                                    <span *ngIf='!(total> 300)'>{{total + 10}} TND</span></li>
+                                        <span *ngIf='!(total> 300)'>{{total + 10}} TND</span></li>
                                 </ul>
                                 <div class="button5">
-                                    <a href="#" class="btn">Checkout</a>
+                                    <a routerLink='cart-validation' class="btn">Checkout</a>
                                     <a routerLink='' class="btn">Continue shopping</a>
                                 </div>
                             </div>

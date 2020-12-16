@@ -1,0 +1,50 @@
+<mat-horizontal-stepper class="container" [linear]="isLinear" #stepper>
+    <mat-step [stepControl]="firstFormGroup">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Details livraison </ng-template>
+            <mat-form-field>
+                <mat-label>Adresse</mat-label>
+                <input matInput placeholder="Adresse" formControlName="firstCtrl" required/>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Ville</mat-label>
+                <input matInput placeholder="Ville" formControlName="firstCtrl" required/>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Gouvernorat</mat-label>
+                <input matInput placeholder="Gouvernorat" formControlName="firstCtrl" required/>
+            </mat-form-field><br>
+            <mat-form-field>
+                <mat-label>Code postale</mat-label>
+                <input matInput placeholder="Code postale" formControlName="firstCtrl" required/>
+            </mat-form-field>
+            <div style="margin-top: 5%;">
+                <button class="btn" mat-button matStepperNext>Suivant</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Mode de paiment ">
+        <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+                <mat-label>Paiment</mat-label>
+                <mat-select formControlName="secondCtrl" required>
+                    <mat-option value="online">En ligne</mat-option>
+                    <mat-option value="residence">Livraison à domicile</mat-option>
+                    <mat-option value="total-point">Retrait chez station Total</mat-option>
+                    <mat-option value="shell-point">Retrait chez station Shell</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <div style="margin-top: 5%;">
+                <button class="btn" mat-button matStepperPrevious>Précédent</button>
+                <button class="btn" mat-button matStepperNext>Confirmer</button>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Confirmation</ng-template>
+        <p style="margin-bottom: 5%;">Votre commande est confirmée</p>
+        <p>Merci pour votre confiance !</p>
+    </mat-step>
+</mat-horizontal-stepper>

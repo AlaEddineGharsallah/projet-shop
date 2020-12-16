@@ -17,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DataService } from "./service/data.service";
 import { HttpClientModule } from '@angular/common/http';
 import {MatDialogModule, MAT_DIALOG_DEFAULT_OPTIONS} from "@angular/material/dialog";
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatStepperModule} from '@angular/material/stepper';
 import { AddPhoneComponent } from './components/admin/add-phone/add-phone.component';
 import { AdminComponent } from './components/admin/admin/admin.component';
 import { AddComputerComponent } from './components/admin/add-computer/add-computer.component';
@@ -27,6 +30,9 @@ import { ShopGridPhonesComponent } from './components/phones/shop-grid-phones/sh
 import { ShopGridComputersComponent } from './components/shop-grid-computers/shop-grid-computers.component';
 import { FilterPipe } from './components/pipes/filter.pipe';
 import { SortPipe } from './components/pipes/sort.pipe';
+import { CartValidationComponent } from './components/cart-validation/cart-validation.component';
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     
@@ -49,10 +55,13 @@ import { SortPipe } from './components/pipes/sort.pipe';
     ShopGridPhonesComponent,
     ShopGridComputersComponent,
     FilterPipe,
-    SortPipe
+    SortPipe,
+    CartValidationComponent
   ],
   entryComponents:[DisplayPhoneComponent],
   imports: [
+    MatStepperModule,
+    MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
     BrowserModule,
@@ -60,7 +69,10 @@ import { SortPipe } from './components/pipes/sort.pipe';
     // InMemoryWebApiModule.forRoot(DataService),
     BrowserAnimationsModule, 
     HttpClientModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule, 
+    MatInputModule,
+    MatStepperModule
   ],
   providers: [
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
